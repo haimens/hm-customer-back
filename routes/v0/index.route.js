@@ -16,7 +16,7 @@ router.use(cors());
 router.use(
     "/",
     router_checker({
-        token_type_zero: [],
+        token_type_zero: ['quote'],
         token_type_one: [],
         token_type_two: [],
         token_type_three: []
@@ -42,10 +42,16 @@ router.use("/signup", signupRoute);
 router.use("/logout", logoutRoute);
 router.use("/forget", forgetRoute);
 
+
+const quoteRoute = require('./quote.route');
+
+
+router.use('/quote', quoteRoute);
+
 // App routes
 
 router.use('/', async (req, res, next) => {
-    res.json({ status: false, message: 'KING V0 INDEX REACHED' });
+    res.json({status: false, message: 'KING V0 INDEX REACHED'});
 });
 
 module.exports = router;
