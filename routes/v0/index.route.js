@@ -19,7 +19,7 @@ router.use(
         token_type_zero: ['quote'],
         token_type_one: [],
         token_type_two: [],
-        token_type_three: []
+        token_type_three: ['address', 'customer', 'email', 'flight', 'note', 'order', 'payment', 'quote', 'message', 'trip']
     })
 );
 

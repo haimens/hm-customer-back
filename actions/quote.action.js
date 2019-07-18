@@ -1,5 +1,5 @@
 const func = require('od-utility');
-const coreConn = require('../../services/core.conn');
+const coreConn = require('../services/core.conn');
 
 class VNQuoteAction {
 

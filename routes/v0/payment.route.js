@@ -2,16 +2,16 @@ const express = require('express');
 const router = express.Router();
 
 const func = require('od-utility');
-const VNQuoteAction = require('../../actions/quote.action');
+const VNPaymentAction = require('../../actions/payment.action');
 
-
-router.post('/:realm_token', async (req, res, next) => {
+router.post('/web/:order_token', async (req, res, next) => {
     try {
-
         const resBody = func.configSuccess(
-            await VNQuoteAction.registerQuoteRecordWithAddress(req.params, req.body, req.query),
-            'QUOTE SUCCESS'
+            await VNPaymentAction.makePaymentForOrder(
+                req.params, req.body, req.query, req.lord.verify_info
+            )
         );
+
         res.json(resBody);
     } catch (e) {
         next(e);
