@@ -8,7 +8,7 @@ const func = require('od-utility');
 router.get('/all/detail/order/:order_token', async (req, res, next) => {
     try {
         const resBody = func.configSuccess(
-            await VNNoteAction.findNoteListWithOrder(req.params, req.body, req.query, req.lord.verify_info)
+            await VNNoteAction.findNoteListWithOrder(req.params, req.body, req.query, req.customer.verify_info)
         );
         res.json(resBody);
 
@@ -21,7 +21,7 @@ router.get('/all/detail/order/:order_token', async (req, res, next) => {
 router.get('/all/detail/customer/:customer_token', async (req, res, next) => {
     try {
         const resBody = func.configSuccess(
-            await VNNoteAction.findNoteListWithCustomer(req.params, req.body, req.query, req.lord.verify_info)
+            await VNNoteAction.findNoteListWithCustomer(req.params, req.body, req.query, req.customer.verify_info)
         );
         res.json(resBody);
 
@@ -33,7 +33,7 @@ router.get('/all/detail/customer/:customer_token', async (req, res, next) => {
 router.get('/all/detail/trip/:trip_token', async (req, res, next) => {
     try {
         const resBody = func.configSuccess(
-            await VNNoteAction.findNoteListWithTrip(req.params, req.body, req.query, req.lord.verify_info)
+            await VNNoteAction.findNoteListWithTrip(req.params, req.body, req.query, req.customer.verify_info)
         );
         res.json(resBody);
 
@@ -45,7 +45,7 @@ router.get('/all/detail/trip/:trip_token', async (req, res, next) => {
 router.post('/detail/customer/:customer_token', async (req, res, next) => {
     try {
         const resBody = func.configSuccess(
-            await VNNoteAction.registerNoteWithCustomer(req.params, req.body, req.query, req.lord.verify_info)
+            await VNNoteAction.registerNoteWithCustomer(req.params, req.body, req.query, req.customer.verify_info)
         );
         res.json(resBody);
 
@@ -57,7 +57,7 @@ router.post('/detail/customer/:customer_token', async (req, res, next) => {
 router.post('/detail/trip/:trip_token', async (req, res, next) => {
     try {
         const resBody = func.configSuccess(
-            await VNNoteAction.registerNoteWithTrip(req.params, req.body, req.query, req.lord.verify_info)
+            await VNNoteAction.registerNoteWithTrip(req.params, req.body, req.query, req.customer.verify_info)
         );
         res.json(resBody);
 
@@ -69,7 +69,7 @@ router.post('/detail/trip/:trip_token', async (req, res, next) => {
 router.post('/detail/order/:order_token', async (req, res, next) => {
     try {
         const resBody = func.configSuccess(
-            await VNNoteAction.registerNoteWithOrder(req.params, req.body, req.query, req.lord.verify_info)
+            await VNNoteAction.registerNoteWithOrder(req.params, req.body, req.query, req.customer.verify_info)
         );
         res.json(resBody);
 
@@ -82,7 +82,7 @@ router.patch('/detail/:order_note_token', async (req, res, next) => {
     try {
         const resBody = func.configSuccess(
             await VNNoteAction.modifyNoteDetail(
-                req.params, req.body, req.query, req.lord.verify_info
+                req.params, req.body, req.query, req.customer.verify_info
             )
         );
         res.json(resBody);

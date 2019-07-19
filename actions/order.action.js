@@ -22,8 +22,8 @@ class VNOrderAction extends VNAction {
 
     static async findOrderListWithCustomer(params, body, query, auth) {
         try {
-            const {customer_token} = params;
-            const {realm_token} = this.checkRealmToken(auth);
+
+            const {realm_token, customer_token} = this.checkRealmToken(auth);
 
             return await coreConn.coreRequest(
                 'GET',

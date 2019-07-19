@@ -16,10 +16,10 @@ router.use(cors());
 router.use(
     "/",
     router_checker({
-        token_type_zero: ['quote'],
+        token_type_zero: ['quote', 'address', 'flight', 'customer'],
         token_type_one: [],
         token_type_two: [],
-        token_type_three: ['address', 'customer', 'email', 'flight', 'note', 'order', 'payment', 'quote', 'message', 'trip']
+        token_type_three: ['email', 'note', 'order', 'payment', 'quote', 'message', 'trip']
     })
 );
 
@@ -44,9 +44,27 @@ router.use("/forget", forgetRoute);
 
 
 const quoteRoute = require('./quote.route');
+const addressRoute = require('./address.route');
+const customerRoute = require('./customer.route');
+const emailRoute = require('./email.route');
+const flightRoute = require('./flight.route');
+const noteRoute = require('./note.route');
+const orderRoute = require('./order.route');
+const paymentRoute = require('./payment.route');
+const smsRoute = require('./sms.route');
+const tripRoute = require('./trip.route');
 
 
 router.use('/quote', quoteRoute);
+router.use('/address', addressRoute);
+router.use('/customer', customerRoute);
+router.use('/email', emailRoute);
+router.use('/flight', flightRoute);
+router.use('/note', noteRoute);
+router.use('/order', orderRoute);
+router.use('/payment', paymentRoute);
+router.use('/message', smsRoute);
+router.use('/trip', tripRoute);
 
 // App routes
 

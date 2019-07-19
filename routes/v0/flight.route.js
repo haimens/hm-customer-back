@@ -5,12 +5,12 @@ const func = require('od-utility');
 
 const VNFlightAction = require('../../actions/flight.action');
 
-router.post('/search', async (req, res, next) => {
+router.post('/search/:realm_token', async (req, res, next) => {
     try {
 
         const resBody = func.configSuccess(
             await VNFlightAction.searchFlightWithInfo(
-                req.params, req.body, req.query, req.lord.verify_info
+                req.params, req.body, req.query
             )
         );
 

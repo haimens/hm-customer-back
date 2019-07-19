@@ -8,7 +8,8 @@ class VNFlightAction extends VNAction {
 
     static async searchFlightWithInfo(params, body, query, auth) {
         try {
-            const {realm_token} = this.checkRealmToken(auth);
+            const {realm_token} = params;
+            if (!realm_token) func.throwErrorWithMissingParam('realm_token');
 
             return await coreConn.coreRequest(
                 'POST',

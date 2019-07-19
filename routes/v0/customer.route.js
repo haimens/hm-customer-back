@@ -4,29 +4,12 @@ const func = require('od-utility');
 
 const VNCustomerAction = require('../../actions/customer.action');
 
-router.get('/all/detail/realm', async (req, res, next) => {
-    try {
-
-        const resBody = func.configSuccess(
-            await VNCustomerAction.findCustomerList(
-                req.params, req.body, req.query, req.lord.verify_info
-            )
-        );
-
-        res.json(resBody);
-
-    } catch (e) {
-        next(e);
-    }
-
-});
-
-router.post('/detail', async (req, res, next) => {
+router.post('/detail/:realm_token', async (req, res, next) => {
     try {
 
         const resBody = func.configSuccess(
             await VNCustomerAction.registerCustomerDetail(
-                req.params, req.body, req.query, req.lord.verify_info
+                req.params, req.body, req.query
             )
         );
 
@@ -38,12 +21,12 @@ router.post('/detail', async (req, res, next) => {
 });
 
 
-router.patch('/detail/:customer_token', async (req, res, next) => {
+router.patch('/detail/:realm_token/:customer_token', async (req, res, next) => {
     try {
 
         const resBody = func.configSuccess(
             await VNCustomerAction.modifyCustomerDetail(
-                req.params, req.body, req.query, req.lord.verify_info
+                req.params, req.body, req.query
             )
         );
 
@@ -55,12 +38,12 @@ router.patch('/detail/:customer_token', async (req, res, next) => {
 });
 
 
-router.patch('/info/:customer_token', async (req, res, next) => {
+router.patch('/info/:realm_token/:customer_token', async (req, res, next) => {
     try {
 
         const resBody = func.configSuccess(
             await VNCustomerAction.modifyCustomerInfo(
-                req.params, req.body, req.query, req.lord.verify_info
+                req.params, req.body, req.query
             )
         );
 
@@ -72,18 +55,18 @@ router.patch('/info/:customer_token', async (req, res, next) => {
 });
 
 
-router.get('/detail/:customer_token', async (req, res, next) => {
-    try {
-        const resBody = func.configSuccess(
-            await VNCustomerAction.findCustomerDetail(
-                req.params, req.body, req.query, req.lord.verify_info
-            )
-        );
-
-        res.json(resBody);
-    } catch (e) {
-        next(e);
-    }
-});
+// router.get('/detail/:customer_token', async (req, res, next) => {
+//     try {
+//         const resBody = func.configSuccess(
+//             await VNCustomerAction.findCustomerDetail(
+//                 req.params, req.body, req.query, req.lord.verify_info
+//             )
+//         );
+//
+//         res.json(resBody);
+//     } catch (e) {
+//         next(e);
+//     }
+// });
 
 module.exports = router;
