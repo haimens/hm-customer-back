@@ -12,7 +12,7 @@ class VNPaymentAction extends VNAction {
     static async makePaymentForOrder(params, body, query, auth) {
         try {
 
-            const {realm_token, lord_token} = this.checkRealmToken(auth);
+            const {realm_token} = this.checkRealmToken(auth);
 
             const {order_token} = params;
 
@@ -44,17 +44,12 @@ class VNPaymentAction extends VNAction {
                 await coreConn.coreRequest(
                     'PATCH',
                     ['order', 'pay', realm_token, order_token],
-                    {lord_token}, {}, {receipt: square_transaction_id, type: 1}
+                    {}, {}, {receipt: square_transaction_id, type: 1}
                 );
+            } else {
+                func.throwError('PAYMENT TYPE NOT ACCEPTED');
             }
 
-            if (type === 2 || type === 3 || type === 4) {
-                await coreConn.coreRequest(
-                    'PATCH',
-                    ['order', 'pay', realm_token, order_token],
-                    {lord_token}, {}, {type, receipt: 'NONE PREPAY'}
-                );
-            }
 
             return {order_token};
 

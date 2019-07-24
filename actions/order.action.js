@@ -86,6 +86,7 @@ class VNOrderAction extends VNAction {
         try {
             const {realm_token} = this.checkRealmToken(auth);
             const {order_token} = params;
+
             if (!order_token) func.throwErrorWithMissingParam('order_token');
             return await coreConn.coreRequest(
                 'POST',
@@ -122,7 +123,7 @@ class VNOrderAction extends VNAction {
             return await coreConn.coreRequest(
                 'PATCH',
                 ['order', 'finalize', realm_token, order_token],
-                {lord_token}, {}, {}
+                {}, {}, {}
             );
         } catch (e) {
             throw e;
