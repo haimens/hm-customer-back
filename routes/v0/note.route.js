@@ -42,7 +42,7 @@ router.get('/all/detail/trip/:trip_token', async (req, res, next) => {
     }
 });
 
-router.post('/detail/customer/:customer_token', async (req, res, next) => {
+router.post('/detail/customer', async (req, res, next) => {
     try {
         const resBody = func.configSuccess(
             await VNNoteAction.registerNoteWithCustomer(req.params, req.body, req.query, req.customer.verify_info)

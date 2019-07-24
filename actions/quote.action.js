@@ -6,14 +6,13 @@ class VNQuoteAction {
     static async registerQuoteRecordWithAddress(params, body, query, auth) {
         try {
             const {realm_token} = params;
-            const record = await coreConn.coreRequest(
+
+
+            return await coreConn.coreRequest(
                 'POST',
-                ['quote', realm_token],
+                ['quote', 'detail', realm_token],
                 {}, {}, body
             );
-
-            console.log(record);
-            return record;
 
         } catch (e) {
             throw e;

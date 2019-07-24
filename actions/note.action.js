@@ -8,8 +8,7 @@ class VNNoteAction extends VNAction {
     static async registerNoteWithCustomer(params, body, query, auth) {
 
         try {
-            const {realm_token} = this.checkRealmToken(auth);
-            const {customer_token} = params;
+            const {realm_token, customer_token} = this.checkRealmToken(auth);
 
 
             return await coreConn.coreRequest(

@@ -71,11 +71,11 @@ class VNOrderAction extends VNAction {
 
     static async registerOrder(params, body, query, auth) {
         try {
-            const {realm_token, lord_token} = this.checkRealmToken(auth);
+            const {realm_token} = this.checkRealmToken(auth);
 
             return await coreConn.coreRequest(
                 'POST',
-                ['order', 'detail', realm_token], {lord_token}, {}, body
+                ['order', 'detail', realm_token], {}, {}, body
             );
         } catch (e) {
             throw e;

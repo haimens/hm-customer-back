@@ -5,7 +5,7 @@ const func = require('od-utility');
 const VNQuoteAction = require('../../actions/quote.action');
 
 
-router.post('/:realm_token', async (req, res, next) => {
+router.post('/detail/:realm_token', async (req, res, next) => {
     try {
 
         const resBody = func.configSuccess(
