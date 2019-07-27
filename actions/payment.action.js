@@ -57,6 +57,25 @@ class VNPaymentAction extends VNAction {
             throw e;
         }
     }
+
+    static async findPaymentResourceDetail(params, body, query, auth) {
+        try {
+            const {realm_token} = this.checkRealmToken(auth);
+
+            const {payment_resource_info} = await coreConn.coreRequest(
+                'GET',
+                ['realm', 'detail', realm_token],
+                {}, {}, {}
+            );
+
+            return {payment_resource_info};
+
+
+        } catch (e) {
+            throw e;
+        }
+
+    }
 }
 
 module.exports = VNPaymentAction;
