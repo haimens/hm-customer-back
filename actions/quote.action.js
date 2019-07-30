@@ -12,8 +12,8 @@ class VNQuoteAction {
 
             console.log('pickup_time', pickup_time);
             console.log('flag', utility.compareWithin(new Date(), pickup_time, 5, 'hour'));
-            
-            if (utility.compareWithin(new Date(), pickup_time, 5, 'hour')) func.throwError('PLEASE BOOK TRIP AT LEAST 5 HOUR AHEAD');
+
+            if (utility.compareWithin(pickup_time, new Date(), 5, 'hour')) func.throwError('PLEASE BOOK TRIP AT LEAST 5 HOUR AHEAD');
 
 
             return await coreConn.coreRequest(
