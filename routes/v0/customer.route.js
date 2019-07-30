@@ -55,7 +55,7 @@ router.patch('/info/:realm_token/:customer_token', async (req, res, next) => {
 });
 
 
-router.get('/detail/:customer_token', async (req, res, next) => {
+router.get('/detail/:realm_token/:customer_token', async (req, res, next) => {
     try {
         const resBody = func.configSuccess(
             await VNCustomerAction.findCustomerDetail(
