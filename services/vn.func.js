@@ -18,8 +18,8 @@ const compareWithin = (first_time, second_time, amount, unit) => {
         const first_moment = moment(first_time);
         const second_moment = moment(second_time);
 
-        console.log('first_moment',first_moment.format('yyyy-mm-dd'));
-        console.log('second_moment',second_moment.format('yyyy-mm-dd'));
+        console.log('first_moment',first_moment.format('YYYY-MM-DD'));
+        console.log('second_moment',second_moment.format('YYYY-MM-DD'));
 
         return first_moment.add(amount, unit).isBefore(second_moment);
     } catch (e) {
